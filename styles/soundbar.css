@@ -1,0 +1,244 @@
+.soundbar-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 50px;
+    left: 51%;
+    overflow-x: hidden;
+}
+.soundbar-section .song-section{
+    width: 86%;
+    height: 100px;
+    background: var(--song-player-color);
+    position: fixed;
+    z-index: 2;
+}
+
+.soundbar-section .song-section .bottom-div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.soundbar-section .song-section .progressbar{
+    width: 100%;
+    height: 15px;
+    cursor: pointer;
+}
+
+.timeline{
+    width: 100%;
+    height: 2px;
+    background: rgb(157,160,163);
+}
+
+.timeline-cover{
+    width: 0;
+    height: 2px;
+    background: red;
+    position: relative;
+}
+
+.progressbar:hover .timeline,
+.progressbar:hover .timeline-cover{
+    height: 4px;
+}
+
+.progressbar:hover .timeline-cover::after{
+    content: "";
+   width: 14px;
+   height: 14px;
+   position: absolute;
+   background: red;
+   border-radius: 50%;
+   top: -5px;
+   right: 0;
+}
+
+.soundbar-section .song-section img{
+    width: 50px;
+    border-radius: 5px;
+}
+
+.soundbar-section .song-section .left{
+    width: calc(85% / 3);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.soundbar-section .song-section .left .text-section{
+    margin-left: 10px;
+}
+
+.soundbar-section .song-section .left .text-section .singer{
+    font-size: 13px;
+    color: gray;
+    margin-top: 3px;
+}
+
+.soundbar-section .text-section .name{
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.soundbar-section .text-section .singer .e{
+    background: var(--e-color);
+    color: #fff;
+    padding: 0 4px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+.soundbar-section .song-section .mid{
+    width: calc(85% / 3);
+    display: flex;
+    align-items: center;
+}
+
+.soundbar-section .song-section .mid .shuffle{
+    margin-right: 40px;
+}
+.soundbar-section .song-section .mid .repeat{
+    margin-left: 34px;
+}
+
+.soundbar-section .song-section .mid .repeat-song{
+    color: red;
+}
+
+.soundbar-section .song-section .mid .previous{
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.soundbar-section .song-section .mid .next{
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.soundbar-section .song-section .mid ion-icon,
+.soundbar-section .song-section .mid i{
+    font-size: 30px;
+    color: gray;
+    cursor: pointer;
+}
+
+.soundbar-section .song-section .mid .play{
+    width: 45px;
+    height: 45px;
+    background: rgba(237,28,36);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.soundbar-section .song-section .right{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.soundbar-section .song-section .right span{
+    font-size: 13px;
+    color: gray;
+}
+
+.soundbar-section .song-section .right .auto .quality{
+    background-color: var(--song-player-color);
+    border-radius: 10px;
+    width: 160px;
+    height: 210px;
+    position: absolute;
+    bottom: 63%;
+    left: 83%;
+    box-shadow: 1px 1px 2px 2px var(--quality-box-shadow);
+    z-index: 2;
+}
+.soundbar-section .song-section .right .auto .span{
+    color: rgba(237,28,36);
+    border: 1px solid rgba(237,28,36);
+    padding: 3px 15px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.soundbar-section .song-section .right i{
+    color: rgba(237,28,36);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.soundbar-section .quality .p-1{
+    color: var(--sound-text-color);
+    font-size: 15px;
+    font-weight: 400;
+    margin: 5px 14px;
+}
+
+.soundbar-section .quality .quality-change{
+    width: 134px;
+    height: 32px;
+    font-size: 10px;
+    margin: 10px 12px;
+    padding-left: 10px;
+    background-color: var(--quality-change-background-color);
+    border-radius: 4px;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+
+.soundbar-section .quality .quality-change:hover{
+    background: var(--body-color);
+}
+
+.soundbar-section .quality .quality-change p{
+    color: rgb(97,101,104);
+}
+
+.soundbar-section .quality .change{
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 36px;
+    line-height: 16px;
+}
+
+.soundbar-section .quality .quality-change p .h1{
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--h1-text-color);
+}
+
+.soundbar-section .quality .black{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000;
+    padding-right: 10px;
+}
+.soundbar-section .quality .black:hover{
+    background-color: #000;
+}
+
+.soundbar-section .quality .black p{
+    font-size: 13px;
+    color: #fff;
+}
+.soundbar-section .quality .black i{
+    color: #fff;
+}
+
+.soundbar-section .quality .change .p-2{
+    color: red;
+}
