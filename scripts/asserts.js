@@ -1,6 +1,6 @@
 let songIndex = 0;
-let imageItems = document.querySelectorAll('.image-item');
-let songItemContainer = document.querySelector('.songItemContainer');
+let imageItems = document.querySelectorAll(".image-item");
+let songItemContainer = document.querySelector(".songItemContainer");
 let upViewWrapper = document.querySelector(".upViewWrapper");
 let bottom = document.querySelector(".bottom");
 let songInfo = document.querySelector(".songInfo");
@@ -10,25 +10,28 @@ let icons = document.querySelector(".icons");
 let sliderWrapper = document.querySelector(".slider-wrapper");
 let upViewIcon = document.querySelector("#upView");
 let audioElement = new Audio("mp3/a_chit_nae_pya_zat.mp3");
-let masterPlay = document.getElementById('masterPlay');
-let myProgressBar = document.getElementById('myProgressBar');
-let masterSongName = document.getElementById('masterSongName');
-let songItems = Array.from(document.getElementsByClassName('songItem'));
-let currentTimeDisplay = document.getElementById('currentTime');
-let durationTimeDisplay = document.getElementById('durationTime');
-let repeatButton = document.getElementById('repeat');
-let shuffleButton = document.getElementById('shuffle');
+let masterPlay = document.getElementById("masterPlay");
+let myProgressBar = document.getElementById("myProgressBar");
+let masterSongName = document.getElementById("masterSongName");
+let songItems = Array.from(document.getElementsByClassName("songItem"));
+let currentTimeDisplay = document.getElementById("currentTime");
+let durationTimeDisplay = document.getElementById("durationTime");
+let repeatButton = document.getElementById("repeat");
+let shuffleButton = document.getElementById("shuffle");
 let singerImg = document.querySelector(".singerImg");
 let singerImage = document.getElementById("singerImage");
 let lyrics = document.getElementById("lyrics");
-let expandedContent = document.querySelector('.expanded-content');
+let expandedContent = document.querySelector(".expanded-content");
 let isRepeating = false;
 let isShuffling = false;
 
 let songs = [
-    {
-        songName: "ကျွန်တော့်နဲ့ အချစ်ရဲ့ပြဇာတ်",filePath: "mp3/a_chit_nae_pya_zat.mp3", coverPath: "images/zaw_win_htut.jpg",artistName: "Zaw Win Htut",songLyrics: 
-                    `လှတဲ့အချစ်နဲ့ ကျွန်တော့ရဲ့ ဒီပြဇာတ်<br>
+  {
+    songName: "ကျွန်တော့်နဲ့ အချစ်ရဲ့ပြဇာတ်",
+    filePath: "mp3/a_chit_nae_pya_zat.mp3",
+    coverPath: "images/zaw_win_htut.jpg",
+    artistName: "Zaw Win Htut",
+    songLyrics: `လှတဲ့အချစ်နဲ့ ကျွန်တော့ရဲ့ ဒီပြဇာတ်<br>
                     အကြမ်းအရမ်း များနဲ့<br>
                     လွမ်းခန်းတွေ မပြတ်<br>
                     ကြမ်းခန်းလေး ရောက်ခဲ့ရင်<br>
@@ -78,19 +81,28 @@ let songs = [
                     လူသားတွေ မျက်ရည် ဝဲမယ်..<br>
                     လွမ်းခန်းတွေ ရောက် ရင်<br>
                     လူ သားတွေ မျက်ရည် ဝဲ မယ်..
-                    <br><br>`
-    },
-    {
-        songName: "အချစ်ဆိုတာ", filePath: "mp3/a_chit_so_dr.mp3", coverPath: "images/phyu_phyu_kyaw_thein.jpg",artistName: "Sweety",
-        songLyrics: ``
-    },
-    {
-        songName: "အနီးဆုံးလား အဝေးဆုံးလား", filePath: "mp3/a_nee_sonr_lr_a_way_sone_lr.mp3", coverPath: "images/phyu_phyu_kyaw_thein.jpg",artistName: "Phyu Phyu Kyaw Thein",
-        songLyrics: ``
-    },
-    {
-        songName: "ဘာလိုလို", filePath: "mp3/br_lo_lo.mp3", coverPath: "images/zaw_win_htut.jpg",artistName: "Zaw Win Htut",
-        songLyrics: `
+                    <br><br>`,
+  },
+  {
+    songName: "အချစ်ဆိုတာ",
+    filePath: "mp3/a_chit_so_dr.mp3",
+    coverPath: "images/phyu_phyu_kyaw_thein.jpg",
+    artistName: "Sweety",
+    songLyrics: ``,
+  },
+  {
+    songName: "အနီးဆုံးလား အဝေးဆုံးလား",
+    filePath: "mp3/a_nee_sonr_lr_a_way_sone_lr.mp3",
+    coverPath: "images/phyu_phyu_kyaw_thein.jpg",
+    artistName: "Phyu Phyu Kyaw Thein",
+    songLyrics: ``,
+  },
+  {
+    songName: "ဘာလိုလို",
+    filePath: "mp3/br_lo_lo.mp3",
+    coverPath: "images/zaw_win_htut.jpg",
+    artistName: "Zaw Win Htut",
+    songLyrics: `
                     တို့နှစ်ယောက်တကယ်ဝေးပြီးနောက်<br>
                     ရင်ခုန်သံပြတ်ဆဲသလား<br>
                     မညာချင်ဘူးကိုယ့်အချစ်လေး<br>
@@ -115,11 +127,14 @@ let songs = [
                     မင်းပြော အချစ်ကလေး<br>
                     ဘာလိုလိုပါ<br>
                     ဘာလိုလိုလားပြောကွယ်<br><br>
-        `
-    },
-    {
-        songName: "ကိုယ့်အတွက်အိပ်မက်မင်းမက်လား", filePath: "mp3/eain_matt_lrr.mp3", coverPath: "images/chaw_su_khin.jpg",artistName: "Chaw Su Khin",
-        songLyrics: `
+        `,
+  },
+  {
+    songName: "ကိုယ့်အတွက်အိပ်မက်မင်းမက်လား",
+    filePath: "mp3/eain_matt_lrr.mp3",
+    coverPath: "images/chaw_su_khin.jpg",
+    artistName: "Chaw Su Khin",
+    songLyrics: `
                     အား... အာ... <br>
                     အကြည့်များဆုံနေလား<br>     
                     အား ရင်ခုန်စေမယ့်ညှို့ချက်မှာ<br>
@@ -163,11 +178,14 @@ let songs = [
                     (မင်းအိမ်မက်ဘယ်သူ့အတွက်လဲ...ရေ့)<br>
                     အာ...အာ..အာ..အာ...<br>
                     (မင်းလေးမက်တဲ့အိမ်မက်ထဲ .... ဟေ့အိမ်မက် မက်ဦး ... မက်အုံး ...)<br><br>  
-        `
-    },
-    {
-        songName: "ဆု", filePath: "mp3/hsu.mp3", coverPath: "images/phyu_phyu_kyaw_thein.jpg",artistName: "Phyu Phyu Kyaw Thein",
-        songLyrics: `
+        `,
+  },
+  {
+    songName: "ဆု",
+    filePath: "mp3/hsu.mp3",
+    coverPath: "images/phyu_phyu_kyaw_thein.jpg",
+    artistName: "Phyu Phyu Kyaw Thein",
+    songLyrics: `
                     စိတ်မဆိုးနဲ့နော်<br>
                     ခွင့်လွှတ်ပါကွယ် ကိုယ်ရိုင်းနေရင်<br>
                     ကိုယ့်စိတ်က အရင်ဒီလို<br>
@@ -200,21 +218,30 @@ let songs = [
                     မင်းငါ့အသဲ ငါ့အချစ်ပဲ<br>
                     မင်းလေးဟာ ငါ့အတွက်ပဲ<br>
                     လွန်တယ်လို့ မင်းမထင်နဲ့<br><br>
-        `
-    },
-    {
-        songName: "ကံကောင်းလို့", filePath: "mp3/kan_kaung_loh.mp3", coverPath: "images/soe_lwin_lwin.jpg",artistName: "Soe Lwin Lwin",
-        songLyrics: `
+        `,
+  },
+  {
+    songName: "ကံကောင်းလို့",
+    filePath: "mp3/kan_kaung_loh.mp3",
+    coverPath: "images/soe_lwin_lwin.jpg",
+    artistName: "Soe Lwin Lwin",
+    songLyrics: `
         
-        `
-    },
-    {
-        songName: "ကောင်းကင်ပြာ", filePath: "mp3/kaung_kin_pyar.mp3", coverPath: "images/chaw_su_khin.jpg",artistName: "Chaw Su Khin",
-        songLyrics: ``
-    },
-    {
-        songName: "မေ့လိုက်တော့", filePath: "mp3/may_lay_tot.mp3", coverPath: "images/htoo_eain_thin.jpg",artistName: "Htoo Eain Thin",
-        songLyrics: `
+        `,
+  },
+  {
+    songName: "ကောင်းကင်ပြာ",
+    filePath: "mp3/kaung_kin_pyar.mp3",
+    coverPath: "images/chaw_su_khin.jpg",
+    artistName: "Chaw Su Khin",
+    songLyrics: ``,
+  },
+  {
+    songName: "မေ့လိုက်တော့",
+    filePath: "mp3/may_lay_tot.mp3",
+    coverPath: "images/htoo_eain_thin.jpg",
+    artistName: "Htoo Eain Thin",
+    songLyrics: `
                     ယုံကြည်တာတွေအားလုံး<br>
                     စွန့်လွှတ်ခဲ့ပါတယ်<br>
                     တို့အချစ်ကဆုံနိုင်ဖို့ သိပ်မလွယ်<br>
@@ -252,395 +279,573 @@ let songs = [
                     မေ့လိုက်တော့အချစ်ကလေးရယ်..<br>
                     ယုံကြည်တာတွေအားလုံး ... အိုးးးဟိုး ဟိုမေ့လိုက်တော့အချစ်ကလေးရယ်<br>
                     (မေ့ပစ်လိုက်ချစ် ရယ် မေ့လိုက်တော့ ချစ်လေးရယ်)*5 <br><br>
-        `
-    },
-    {
-        songName: "မျက်၀န်းထဲမှာ အဖြေရှာ", filePath: "mp3/myat_wunn_htae_mr_aphyay_shar.mp3", coverPath: "images/ni_ni_khin_zaw.jpg",artistName: "Ni Ni Khin Zaw",
-        songLyrics: ``
-    },
-    {
-        songName: "မျက်ဝန်းလဲ့ပြာပြာ", filePath: "mp3/myat_wunn_lae_pyar_pyar.mp3", coverPath: "images/kyaw_thi_han.jpg",artistName: "Kyaw Thi Han",
-        songLyrics: ``
-    },
-    {
-        songName: "ပိုလာဘာလီ", filePath: "mp3/po_lr_br_li.mp3", coverPath: "images/kyaw_thi_han.jpg",artistName: "Kyaw Thi Han",
-        songLyrics: ``
-    },
-    {
-        songName: "တသိမ့်သိမ့်သူ", filePath: "mp3/ta_taint_taint_thu.mp3", coverPath: "images/kyaw_thi_han.jpg",artistName: "Kyaw Thi Han",
-        songLyrics: ``
-    },
-    {
-        songName: "အချိန်ရမှ နားထောင်ပါ", filePath: "mp3/a_chain_ya_ma.mp3", coverPath: "images/kyaw_thi_han.jpg",artistName: "Kyaw Thi Han",
-        songLyrics: ``
-    },
-    {
-        songName: "တယ်လီဖုန်းလေး", filePath: "mp3/telephone_lay.mp3",  coverPath: "images/shin_phone.jpg", artistName: "Shin Phone",
-        songLyrics: ``
-    },
-    {
-        songName: "ကိုကိုချစ်", filePath: "mp3/ko_ko_chit.mp3", coverPath: "images/shin_phone.jpg",artistName: "Shin Phone",
-        songLyrics: ``
-    },
-    {
-        songName: "ကိုယ်ပိုင်တဲ့နေရာ", filePath: "mp3/ko_paing_tat_nay_yr.mp3", coverPath: "images/shin_phone.jpg",artistName: "Shin Phone",
-        songLyrics: ``
-    },
-    {
-        songName: "တိုးတိတ်တမ်းတ", filePath: "mp3/toe_tate_tam_ta.mp3", coverPath: "images/shin_phone.jpg",artistName: "Shin Phone",
-        songLyrics: ``
-    },
-    {
-        songName: "ရင်ခုန်မြတ်နိုးခြင်း", filePath: "mp3/yin_khone_myat_noe_chin.mp3", coverPath: "images/chaw_su_khin.jpg",artistName: "Chaw Su Khin",
-        songLyrics: ``
-    },
-    {
-        songName: "အနန္ဓသစ္စာ", filePath: "mp3/a_nanda_thitsa.mp3", coverPath: "images/chaw_su_khin.jpg",artistName: "Chaw Su Khin",
-        songLyrics: ``
-    },
-    {
-        songName: "အတမ်းတဆုံး", filePath: "mp3/a_tam_ta_sone.mp3", coverPath: "images/chaw_su_khin.jpg",artistName: "Chaw Su Khin",
-        songLyrics: ``
-    },
-    {
-        songName: "ရှက်လဲရှက်ပါတယ်", filePath: "mp3/shatt_lal_spt.mp3", coverPath: "images/chaw_su_khin.jpg",artistName: "Chaw Su Khin",
-        songLyrics: ``
-    },
-    {
-        songName: "အချစ်တဲ့လား", filePath: "mp3/a_chit_tat_lr.mp3", coverPath: "images/zaw_win_htut.jpg",artistName: "Zaw Win Htut",
-        songLyrics: ``
-    },
-    {
-        songName: "အစမ်းသပ်ခံအသည်းနှလုံး", filePath: "mp3/a_san_tut_khan.mp3", coverPath: "images/zaw_win_htut.jpg",artistName: "Zaw Win Htut",
-        songLyrics: ``
-    },
-    {
-        songName: "အရက်ချိုချို အချစ်ခါးခါး", filePath: "mp3/a_yet_cho_cho.mp3", coverPath: "images/zaw_win_htut.jpg",artistName: "Zaw Win Htut",
-        songLyrics: ``
-    },
-    {
-        songName: "ပျားရည်", filePath: "mp3/pyar_yee.mp3", coverPath: "images/zaw_win_htut.jpg",artistName: "Zaw Win Htut",
-        songLyrics: ``
-    },
-    {
-        songName: "အလကားပဲ", filePath: "mp3/a_la_krr_pal.mp3", coverPath: "images/ni_ni_khin_zaw.jpg",artistName: "Ni Ni Khin Zaw",
-        songLyrics: ``
-    },
-    {
-        songName: "ဂယ်ပဲ", filePath: "mp3/gal_ba.mp3", coverPath: "images/ni_ni_khin_zaw.jpg",artistName: "Ni Ni Khin Zaw",
-        songLyrics: ``
-    },
-    {
-        songName: "မိုးကပြောတဲ့အလွမ်းဇာတ်လမ်း", filePath: "mp3/moe_ka_pyaw_tat.mp3", coverPath: "images/ni_ni_khin_zaw.jpg",artistName: "Ni Ni Khin Zaw",
-        songLyrics: ``
-    },
-    {
-        songName: "ရှင်ဘုရင်လေး", filePath: "mp3/shn_ba_yin_lay.mp3", coverPath: "images/ni_ni_khin_zaw.jpg",artistName: "Ni Ni Khin Zaw",
-        songLyrics: ``
-    },
-    {
-        songName: "ဘယ်သူကိုယ့်လောက်ချစ်လဲ", filePath: "mp3/bal_thu_ko_lout_chit.mp3", coverPath: "images/phyu_phyu_kyaw_thein.jpg",artistName: "Phyu Phyu Kyaw Thein",
-        songLyrics: ``
-    },
-    {
-        songName: "ထွက်သွားပါတော့", filePath: "mp3/htwet_twar.mp3", coverPath: "images/phyu_phyu_kyaw_thein.jpg",artistName: "Phyu Phyu Kyaw Thein",
-        songLyrics: ``
-    },
-    {
-        songName: "လှည့်စားလိုက်", filePath: "mp3/lae_srr_lite.mp3", coverPath: "images/phyu_phyu_kyaw_thein.jpg",artistName: "Phyu Phyu Kyaw Thein",
-        songLyrics: ``
-    },
-    {
-        songName: "ချစ်သူ့လက်ဆောင်", filePath: "mp3/chit_thu_latt_saung.mp3", coverPath: "images/htoo_eain_thin.jpg",artistName: "Htoo Eain Thin",
-        songLyrics: ``
-    },
-    {
-        songName: "ဂျပ်ဆင်ထိပ်က လိပ်ပြာ", filePath: "mp3/just_sin.mp3", coverPath: "images/htoo_eain_thin.jpg",artistName: "Htoo Eain Thin",
-        songLyrics: ``
-    },
-    {
-        songName: "ကျေးဇူးပါမေမေ", filePath: "mp3/kyae_zuu_pr_may_may.mp3", coverPath: "images/htoo_eain_thin.jpg",artistName: "Htoo Eain Thin",
-        songLyrics: ``
-    },
-    {
-        songName: "ပထမအသည်းကွဲဇာတ်လမ်း", filePath: "mp3/pa_hta_ma_a_thae.mp3", coverPath: "images/htoo_eain_thin.jpg",artistName: "Htoo Eain Thin",
-        songLyrics: ``
-    },
-    {
-        songName: "ဆွေးတယ်", filePath: "mp3/swal_tal.mp3", coverPath: "images/htoo_eain_thin.jpg",artistName: "Htoo Eain Thin",
-        songLyrics: ``
-    },
-    {
-        songName: "ကိုယ်ချင်းစာ နာခဲ့ရပြီလေ", filePath: "mp3/ko_chin_sar.mp3", coverPath: "images/soe_lwin_lwin.jpg",artistName: "Soe Lwin Lwin",
-        songLyrics: ``
-    },
-    {
-        songName: "ငယ်သူမို့", filePath: "mp3/ngal_thu_moh.mp3", coverPath: "images/soe_lwin_lwin.jpg",artistName: "Soe Lwin Lwin",
-        songLyrics: ``
-    },
-    {
-        songName: "စိတ်ကူးလေးရွက်လွင့်မယ်", filePath: "mp3/sate_kuu_lay.mp3", coverPath: "images/soe_lwin_lwin.jpg",artistName: "Soe Lwin Lwin",
-        songLyrics: ``
-    },
-    {
-        songName: "စာ",  filePath: "mp3/sar.mp3", coverPath: "images/soe_lwin_lwin.jpg", artistName: "Soe Lwin Lwin",
-        songLyrics: ``
-    },
+        `,
+  },
+  {
+    songName: "မျက်၀န်းထဲမှာ အဖြေရှာ",
+    filePath: "mp3/myat_wunn_htae_mr_aphyay_shar.mp3",
+    coverPath: "images/ni_ni_khin_zaw.jpg",
+    artistName: "Ni Ni Khin Zaw",
+    songLyrics: ``,
+  },
+  {
+    songName: "မျက်ဝန်းလဲ့ပြာပြာ",
+    filePath: "mp3/myat_wunn_lae_pyar_pyar.mp3",
+    coverPath: "images/kyaw_thi_han.jpg",
+    artistName: "Kyaw Thi Han",
+    songLyrics: ``,
+  },
+  {
+    songName: "ပိုလာဘာလီ",
+    filePath: "mp3/po_lr_br_li.mp3",
+    coverPath: "images/kyaw_thi_han.jpg",
+    artistName: "Kyaw Thi Han",
+    songLyrics: ``,
+  },
+  {
+    songName: "တသိမ့်သိမ့်သူ",
+    filePath: "mp3/ta_taint_taint_thu.mp3",
+    coverPath: "images/kyaw_thi_han.jpg",
+    artistName: "Kyaw Thi Han",
+    songLyrics: ``,
+  },
+  {
+    songName: "အချိန်ရမှ နားထောင်ပါ",
+    filePath: "mp3/a_chain_ya_ma.mp3",
+    coverPath: "images/kyaw_thi_han.jpg",
+    artistName: "Kyaw Thi Han",
+    songLyrics: ``,
+  },
+  {
+    songName: "တယ်လီဖုန်းလေး",
+    filePath: "mp3/telephone_lay.mp3",
+    coverPath: "images/shin_phone.jpg",
+    artistName: "Shin Phone",
+    songLyrics: ``,
+  },
+  {
+    songName: "ကိုကိုချစ်",
+    filePath: "mp3/ko_ko_chit.mp3",
+    coverPath: "images/shin_phone.jpg",
+    artistName: "Shin Phone",
+    songLyrics: ``,
+  },
+  {
+    songName: "ကိုယ်ပိုင်တဲ့ ကိုယ့်နေရာ",
+    filePath: "mp3/ko_paing_tat_nay_yr.mp3",
+    coverPath: "images/shin_phone.jpg",
+    artistName: "Shin Phone",
+    songLyrics: `
+        သော်တာ..လမင်း<br>
+        ငွေစင်ကြယ်တွေတိုင်တည်ရင်း<br>
+        အိမ်ပြန်လမ်း မင်းရှိရာ<br>
+        မှန်းဆပြီး ပြန်လာမှာ<br>
+    
+        ကြင်နာသူရင်ခွင်မှာခိုဝင်နားဖို့ကြိုနေပါ<br>
+        ရင်မှာမေးချင်နေသောစကား<br>
+        အရင်လို ကိုယ့်ကိုချစ်သေးလား<br>
 
+        မင်းဆီမှာ ရှိသေးလား ချစ်သူရာ<br>
+        ဦးထားတဲ့ အသည်းတစ်နေရာ<br>
+        အမြဲတမ်းကိုယ်နေဖို့ရာ<br>
 
+        ကြင်နာသူမင်းဆီမှာရှိသေးလားချစ်သူရာ<br>
+        အမြဲတမ်းပဲနားခိုဖို့<br>
+        စိုးရိမ်တယ် ပျောက်ကွယ်မှာ<br>
 
+        ကိုယ်ရင်ခုန်ရင်း<br>
+        အရာရာယုံကြည်မျှော်လင့်ရင်း<br>
+        အချိန်ရှိတိုင်းနှလုံးသားမှာအားတင်းနေမှာ<br>
+
+        ဒီနေရာ ကိုယ်သာပိုင်<br>
+        ဘယ်အခါအရှုံးနဲ့မကြုံချင်ပါ<br>
+        ရင်မှာကြိတ်ကာဆုတောင်းမိ<br>
+        ကိုယ်ချစ်သွားမယ်နောက်ဆုံးထိ<br>
+
+        မင်းဆီမှာ ရှိသေးလားချစ်သူရာ<br>
+        ဦးထားတဲ့ အသည်းတစ်နေရာ<br>
+        အမြဲတမ်းကိုယ်နေဖို့ရာ<br>
+
+        ကြင်နာသူမင်းဆီမှာရှိသေးလားချစ်သူရာ<br>
+        အမြဲတမ်းပဲ နားခိုဖို့<br>
+        စိုးရိမ်တယ်ပျောက်ကွယ်မှာ<br>
+
+        ဟိုအရင်လိုရည်းစားဘဝကိုပဲလွမ်းတယ်<br>
+        ကြာလာရင် တို့နှစ်ယောက်ဝေးမှာစိုး<br>
+        အချစ်ဆုံးအတူနေကြစို့<br>
+
+        မင်းဆီမှာ ရှိသေးလား ချစ်သူရာ<br>
+        ဦးထားတဲ့အသည်းတစ်နေရာ<br>
+        အမြဲတမ်းကိုယ်နေဖို့ရာ<br>
+
+        ကြင်နာသူမင်းဆီမှာရှိသေးလားချစ်သူရာ<br>
+        အမြဲတမ်းပဲနားခိုဖို့<br>
+        စိုးရိမ်တယ် ပျောက်ကွယ်မှာ<br>
+
+        ကိုယ်ပိုင်တဲ့ကိုယ့်နေရာ<br>
+        ဘယ်သူ့..ကိုမှ..မပေး..နိူင်....<br>
+    `,
+  },
+  {
+    songName: "တိုးတိတ်တမ်းတ",
+    filePath: "mp3/toe_tate_tam_ta.mp3",
+    coverPath: "images/shin_phone.jpg",
+    artistName: "Shin Phone",
+    songLyrics: ``,
+  },
+  {
+    songName: "ရင်ခုန်မြတ်နိုးခြင်း",
+    filePath: "mp3/yin_khone_myat_noe_chin.mp3",
+    coverPath: "images/chaw_su_khin.jpg",
+    artistName: "Chaw Su Khin",
+    songLyrics: ``,
+  },
+  {
+    songName: "အနန္ဓသစ္စာ",
+    filePath: "mp3/a_nanda_thitsa.mp3",
+    coverPath: "images/chaw_su_khin.jpg",
+    artistName: "Chaw Su Khin",
+    songLyrics: ``,
+  },
+  {
+    songName: "အတမ်းတဆုံး",
+    filePath: "mp3/a_tam_ta_sone.mp3",
+    coverPath: "images/chaw_su_khin.jpg",
+    artistName: "Chaw Su Khin",
+    songLyrics: ``,
+  },
+  {
+    songName: "ရှက်လဲရှက်ပါတယ်",
+    filePath: "mp3/shatt_lal_spt.mp3",
+    coverPath: "images/chaw_su_khin.jpg",
+    artistName: "Chaw Su Khin",
+    songLyrics: ``,
+  },
+  {
+    songName: "အချစ်တဲ့လား",
+    filePath: "mp3/a_chit_tat_lr.mp3",
+    coverPath: "images/zaw_win_htut.jpg",
+    artistName: "Zaw Win Htut",
+    songLyrics: ``,
+  },
+  {
+    songName: "အစမ်းသပ်ခံအသည်းနှလုံး",
+    filePath: "mp3/a_san_tut_khan.mp3",
+    coverPath: "images/zaw_win_htut.jpg",
+    artistName: "Zaw Win Htut",
+    songLyrics: ``,
+  },
+  {
+    songName: "အရက်ချိုချို အချစ်ခါးခါး",
+    filePath: "mp3/a_yet_cho_cho.mp3",
+    coverPath: "images/zaw_win_htut.jpg",
+    artistName: "Zaw Win Htut",
+    songLyrics: ``,
+  },
+  {
+    songName: "ပျားရည်",
+    filePath: "mp3/pyar_yee.mp3",
+    coverPath: "images/zaw_win_htut.jpg",
+    artistName: "Zaw Win Htut",
+    songLyrics: ``,
+  },
+  {
+    songName: "အလကားပဲ",
+    filePath: "mp3/a_la_krr_pal.mp3",
+    coverPath: "images/ni_ni_khin_zaw.jpg",
+    artistName: "Ni Ni Khin Zaw",
+    songLyrics: ``,
+  },
+  {
+    songName: "ဂယ်ပဲ",
+    filePath: "mp3/gal_ba.mp3",
+    coverPath: "images/ni_ni_khin_zaw.jpg",
+    artistName: "Ni Ni Khin Zaw",
+    songLyrics: ``,
+  },
+  {
+    songName: "မိုးကပြောတဲ့အလွမ်းဇာတ်လမ်း",
+    filePath: "mp3/moe_ka_pyaw_tat.mp3",
+    coverPath: "images/ni_ni_khin_zaw.jpg",
+    artistName: "Ni Ni Khin Zaw",
+    songLyrics: ``,
+  },
+  {
+    songName: "ရှင်ဘုရင်လေး",
+    filePath: "mp3/shn_ba_yin_lay.mp3",
+    coverPath: "images/ni_ni_khin_zaw.jpg",
+    artistName: "Ni Ni Khin Zaw",
+    songLyrics: ``,
+  },
+  {
+    songName: "ဘယ်သူကိုယ့်လောက်ချစ်လဲ",
+    filePath: "mp3/bal_thu_ko_lout_chit.mp3",
+    coverPath: "images/phyu_phyu_kyaw_thein.jpg",
+    artistName: "Phyu Phyu Kyaw Thein",
+    songLyrics: ``,
+  },
+  {
+    songName: "ထွက်သွားပါတော့",
+    filePath: "mp3/htwet_twar.mp3",
+    coverPath: "images/phyu_phyu_kyaw_thein.jpg",
+    artistName: "Phyu Phyu Kyaw Thein",
+    songLyrics: ``,
+  },
+  {
+    songName: "လှည့်စားလိုက်",
+    filePath: "mp3/lae_srr_lite.mp3",
+    coverPath: "images/phyu_phyu_kyaw_thein.jpg",
+    artistName: "Phyu Phyu Kyaw Thein",
+    songLyrics: ``,
+  },
+  {
+    songName: "ချစ်သူ့လက်ဆောင်",
+    filePath: "mp3/chit_thu_latt_saung.mp3",
+    coverPath: "images/htoo_eain_thin.jpg",
+    artistName: "Htoo Eain Thin",
+    songLyrics: ``,
+  },
+  {
+    songName: "ဂျပ်ဆင်ထိပ်က လိပ်ပြာ",
+    filePath: "mp3/just_sin.mp3",
+    coverPath: "images/htoo_eain_thin.jpg",
+    artistName: "Htoo Eain Thin",
+    songLyrics: ``,
+  },
+  {
+    songName: "ကျေးဇူးပါမေမေ",
+    filePath: "mp3/kyae_zuu_pr_may_may.mp3",
+    coverPath: "images/htoo_eain_thin.jpg",
+    artistName: "Htoo Eain Thin",
+    songLyrics: ``,
+  },
+  {
+    songName: "ပထမအသည်းကွဲဇာတ်လမ်း",
+    filePath: "mp3/pa_hta_ma_a_thae.mp3",
+    coverPath: "images/htoo_eain_thin.jpg",
+    artistName: "Htoo Eain Thin",
+    songLyrics: ``,
+  },
+  {
+    songName: "ဆွေးတယ်",
+    filePath: "mp3/swal_tal.mp3",
+    coverPath: "images/htoo_eain_thin.jpg",
+    artistName: "Htoo Eain Thin",
+    songLyrics: ``,
+  },
+  {
+    songName: "ကိုယ်ချင်းစာ နာခဲ့ရပြီလေ",
+    filePath: "mp3/ko_chin_sar.mp3",
+    coverPath: "images/soe_lwin_lwin.jpg",
+    artistName: "Soe Lwin Lwin",
+    songLyrics: ``,
+  },
+  {
+    songName: "ငယ်သူမို့",
+    filePath: "mp3/ngal_thu_moh.mp3",
+    coverPath: "images/soe_lwin_lwin.jpg",
+    artistName: "Soe Lwin Lwin",
+    songLyrics: ``,
+  },
+  {
+    songName: "စိတ်ကူးလေးရွက်လွင့်မယ်",
+    filePath: "mp3/sate_kuu_lay.mp3",
+    coverPath: "images/soe_lwin_lwin.jpg",
+    artistName: "Soe Lwin Lwin",
+    songLyrics: ``,
+  },
+  {
+    songName: "စာ",
+    filePath: "mp3/sar.mp3",
+    coverPath: "images/soe_lwin_lwin.jpg",
+    artistName: "Soe Lwin Lwin",
+    songLyrics: ``,
+  },
 ];
 let originalSongs = [...songs];
-let topSongs = songs.slice(0,10);
-console.log("originalSongs",originalSongs);
+let topSongs = songs.slice(0, 10);
+console.log("originalSongs", originalSongs);
 
 const limitedSongs = songs.slice(0, 10);
 
 // Loop through the limited songs and create the HTML for each
 limitedSongs.forEach((song, i) => {
-    const songItem = document.createElement('div');
-    songItem.className = 'songItem';
+  const songItem = document.createElement("div");
+  songItem.className = "songItem";
 
-    const img = document.createElement('img');
-    img.alt = i + 1;
-    img.src = song.coverPath;
+  const img = document.createElement("img");
+  img.alt = i + 1;
+  img.src = song.coverPath;
 
-    const songName = document.createElement('span');
-    songName.className = 'songName';
-    songName.innerText = song.songName;
+  const songName = document.createElement("span");
+  songName.className = "songName";
+  songName.innerText = song.songName;
 
-    const songlistplay = document.createElement('span');
-    songlistplay.className = 'songlistplay';
+  const songlistplay = document.createElement("span");
+  songlistplay.className = "songlistplay";
 
-    const timestamp = document.createElement('span');
-    timestamp.className = 'timestamp';
-    timestamp.innerHTML = `03:00 <i id="${i}" class="far songItemPlay fa-play-circle"></i>`;
+  const timestamp = document.createElement("span");
+  timestamp.className = "timestamp";
+  timestamp.innerHTML = `<span id="time-${i}">Loading...</span> 
+                           <i id="play-${i}" class="far songItemPlay fa-play-circle"></i>`;
 
-    songlistplay.appendChild(timestamp);
-    songItem.appendChild(img);
-    songItem.appendChild(songName);
-    songItem.appendChild(songlistplay);
-    songItemContainer.appendChild(songItem);
+  songlistplay.appendChild(timestamp);
+  songItem.appendChild(img);
+  songItem.appendChild(songName);
+  songItem.appendChild(songlistplay);
+  songItemContainer.appendChild(songItem);
+
+  const tempAudio = new Audio(song.filePath);
+  tempAudio.addEventListener("loadedmetadata", () => {
+    let minutes = Math.floor(tempAudio.duration / 60);
+    let seconds = Math.floor(tempAudio.duration % 60);
+    if (seconds < 10) seconds = `0${seconds}`;
+    document.getElementById(`time-${i}`).innerText = `${minutes}:${seconds}`;
+  });
 });
 
 let displaySongsByArtist = (artistName) => {
-    try {
-        songItemContainer.innerHTML = '';
+  try {
+    songItemContainer.innerHTML = "";
 
-        let filteredSongs = originalSongs.filter(song => song.artistName === artistName);
-        console.log(originalSongs);
-        console.log(filteredSongs);
+    let filteredSongs = originalSongs.filter(
+      (song) => song.artistName === artistName
+    );
+    console.log(originalSongs);
+    console.log(filteredSongs);
 
-        let topic = document.querySelector(".topic");
-        topic.innerHTML = `${artistName}'s Songs`;
+    let topic = document.querySelector(".topic");
+    topic.innerHTML = `${artistName}'s Songs`;
 
-        filteredSongs.forEach((song, index) => {
-            let songItem = document.createElement('div');
-            songItem.className = 'songItem';
-            songItem.innerHTML = `
+    filteredSongs.forEach((song, index) => {
+      let songItem = document.createElement("div");
+      songItem.className = "songItem";
+      songItem.innerHTML = `
                 <img src="${song.coverPath}" alt="Song Cover ${index + 1}">
                 <span class="songName">${song.songName}</span>
                 <span class="songlistplay">
-                    <span class="timestamp">05:34 <i id="play-${index}" class="far songItemPlay fa-play-circle"></i></span>
+                    <span class="timestamp"><span id="time-${index}">Loading...</span><i id="play-${index}" class="far songItemPlay fa-play-circle"></i></span>
                 </span>
-            `;  
-            songItemContainer.appendChild(songItem);
+            `;
+      const tempAudio = new Audio(song.filePath);
+      tempAudio.addEventListener("loadedmetadata", () => {
+        let minutes = Math.floor(tempAudio.duration / 60);
+        let seconds = Math.floor(tempAudio.duration % 60);
+        if (seconds < 10) seconds = `0${seconds}`;
+        document.getElementById(
+          `time-${index}`
+        ).innerText = `${minutes}:${seconds}`;
+      });
+      songItemContainer.appendChild(songItem);
+    });
+
+    Array.from(document.getElementsByClassName("songItemPlay")).forEach(
+      (element) => {
+        element.addEventListener("click", (e) => {
+          makeAllPlays();
+          songIndex = parseInt(e.target.id.replace("play-", ""));
+          e.target.classList.remove("fa-play-circle");
+          e.target.classList.add("fa-pause-circle");
+          audioElement.src = `${filteredSongs[songIndex].filePath}`;
+          updateSongDetails(filteredSongs);
+          audioElement.currentTime = 0;
+          audioElement.play();
+          masterPlay.classList.remove("fa-play-circle");
+          masterPlay.classList.add("fa-pause-circle");
         });
+      }
+    );
 
-        Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) => {
-            element.addEventListener('click', (e) => {
-                makeAllPlays();
-                songIndex = parseInt(e.target.id.replace('play-', ''));
-                e.target.classList.remove('fa-play-circle');
-                e.target.classList.add('fa-pause-circle');
-                audioElement.src = `${filteredSongs[songIndex].filePath}`;
-                updateSongDetails(filteredSongs);
-                audioElement.currentTime = 0;
-                audioElement.play();
-                masterPlay.classList.remove('fa-play-circle');
-                masterPlay.classList.add('fa-pause-circle');
-            });
-        });
-
-        console.log("filterSongs", filteredSongs);
-        console.log("filteredSongs.length",filteredSongs.length);
-        if(filteredSongs.length !== 0){
-            songs = filteredSongs;
-            console.log("songs",songs);
-        }
-        else {
-            console.error(`No Songs found for ${artistName}`);
-            location.reload();
-            return;
-        };
-        console.log("songs", songs);
-        songIndex = 0;
-        updateSongDetails(songs);
-        audioElement.src = `${songs[songIndex].filePath}`;
-        audioElement.currentTime = 0;
-        audioElement.play();
-        masterPlay.classList.remove('fa-play-circle');
-        masterPlay.classList.add('fa-pause-circle');
-
-    } catch (error) {
-        console.error(`Error displaying songs for artist ${artistName}:`, error);
+    console.log("filterSongs", filteredSongs);
+    console.log("filteredSongs.length", filteredSongs.length);
+    if (filteredSongs.length !== 0) {
+      songs = filteredSongs;
+      console.log("songs", songs);
+    } else {
+      console.error(`No Songs found for ${artistName}`);
+      location.reload();
+      return;
     }
+    console.log("songs", songs);
+    songIndex = 0;
+    updateSongDetails(songs);
+    audioElement.src = `${songs[songIndex].filePath}`;
+    audioElement.currentTime = 0;
+    audioElement.play();
+    masterPlay.classList.remove("fa-play-circle");
+    masterPlay.classList.add("fa-pause-circle");
+  } catch (error) {
+    console.error(`Error displaying songs for artist ${artistName}:`, error);
+  }
 };
 
 let updateSongDetails = (songsList = songs) => {
-    singerImage.src = songsList[songIndex].coverPath;
-    masterSongName.innerText = songsList[songIndex].songName;
-    if (songsList[songIndex].songLyrics) {
-        lyrics.innerHTML = `
+  singerImage.src = songsList[songIndex].coverPath;
+  masterSongName.innerText = songsList[songIndex].songName;
+  if (songsList[songIndex].songLyrics) {
+    lyrics.innerHTML = `
             <h3>${songsList[songIndex].songName}</h3>
             <br>
             <span>ဆို - ${songsList[songIndex].artistName}</span>
             <br><br>
             ${songsList[songIndex].songLyrics}`;
-    } else {
-        lyrics.innerHTML = `
+  } else {
+    lyrics.innerHTML = `
             <h3>${songsList[songIndex].songName}</h3>
             <br>
             <span>ဆို - ${songsList[songIndex].artistName}</span>
             <br><br>
             <p>ဤသီချင်းအတွက် စာသားမရှိသေးပါ</p>`;
-    }
+  }
 };
 
-imageItems.forEach(image => { 
-    image.addEventListener('click', () => {
-        let artistName = image.alt;
-        console.log(artistName);
-        displaySongsByArtist(artistName);
-    });
+imageItems.forEach((image) => {
+  image.addEventListener("click", () => {
+    let artistName = image.alt;
+    console.log(artistName);
+    displaySongsByArtist(artistName);
+  });
 });
 
-masterPlay.addEventListener('click', () => {
-    console.log("masterPlay is called.")
-    if (audioElement.paused || audioElement.currentTime <= 0) {
-        audioElement.play();
-        masterPlay.classList.remove('fa-play-circle');
-        masterPlay.classList.add('fa-pause-circle');
-    } else {
-        audioElement.pause();
-        masterPlay.classList.remove('fa-pause-circle');
-        masterPlay.classList.add('fa-play-circle');
-    }
+masterPlay.addEventListener("click", () => {
+  console.log("masterPlay is called.");
+  if (audioElement.paused || audioElement.currentTime <= 0) {
+    audioElement.play();
+    masterPlay.classList.remove("fa-play-circle");
+    masterPlay.classList.add("fa-pause-circle");
+  } else {
+    audioElement.pause();
+    masterPlay.classList.remove("fa-pause-circle");
+    masterPlay.classList.add("fa-play-circle");
+  }
 });
 
-myProgressBar.addEventListener('change', () => {
-    audioElement.currentTime = myProgressBar.value * audioElement.duration / 100;
+myProgressBar.addEventListener("change", () => {
+  audioElement.currentTime =
+    (myProgressBar.value * audioElement.duration) / 100;
 });
 
 const makeAllPlays = () => {
-    Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) => {
-        element.classList.remove('fa-pause-circle');
-        element.classList.add('fa-play-circle');
-    });
+  Array.from(document.getElementsByClassName("songItemPlay")).forEach(
+    (element) => {
+      element.classList.remove("fa-pause-circle");
+      element.classList.add("fa-play-circle");
+    }
+  );
 };
 
-audioElement.addEventListener('timeupdate', () => { 
-    let progress = parseInt((audioElement.currentTime / audioElement.duration) * 100); 
-    myProgressBar.value = progress;
+audioElement.addEventListener("timeupdate", () => {
+  let progress = parseInt(
+    (audioElement.currentTime / audioElement.duration) * 100
+  );
+  myProgressBar.value = progress;
 
-    let currentMinutes = Math.floor(audioElement.currentTime / 60);
-    console.log("currentMinutes from timeupdate",currentMinutes);
-    let currentSeconds = Math.floor(audioElement.currentTime % 60);
+  let currentMinutes = Math.floor(audioElement.currentTime / 60);
+  console.log("currentMinutes from timeupdate", currentMinutes);
+  let currentSeconds = Math.floor(audioElement.currentTime % 60);
 
-    if (currentMinutes < 10) { currentMinutes = '0' + currentMinutes; }
-    if (currentSeconds < 10) { currentSeconds = '0' + currentSeconds; }
-    currentTimeDisplay.innerText = `${currentMinutes}:${currentSeconds}`;
+  if (currentMinutes < 10) {
+    currentMinutes = "0" + currentMinutes;
+  }
+  if (currentSeconds < 10) {
+    currentSeconds = "0" + currentSeconds;
+  }
+  currentTimeDisplay.innerText = `${currentMinutes}:${currentSeconds}`;
 
-    let durationMinutes = Math.floor(audioElement.duration / 60);
-    let durationSeconds = Math.floor(audioElement.duration % 60);
+  let durationMinutes = Math.floor(audioElement.duration / 60);
+  let durationSeconds = Math.floor(audioElement.duration % 60);
 
-    if (durationMinutes < 10) { durationMinutes = '0' + durationMinutes; }
-    if (durationSeconds < 10) { durationSeconds = '0' + durationSeconds; }
-    durationTimeDisplay.innerText = `${durationMinutes}:${durationSeconds}`;
+  if (durationMinutes < 10) {
+    durationMinutes = "0" + durationMinutes;
+  }
+  if (durationSeconds < 10) {
+    durationSeconds = "0" + durationSeconds;
+  }
+  durationTimeDisplay.innerText = `${durationMinutes}:${durationSeconds}`;
 });
 
-document.getElementById('next').addEventListener('click', () => {
-    console.log("next function is called");
-    if (isShuffling) {
-        songIndex = Math.floor(Math.random() * songs.length);
+document.getElementById("next").addEventListener("click", () => {
+  console.log("next function is called");
+  if (isShuffling) {
+    songIndex = Math.floor(Math.random() * songs.length);
+  } else {
+    if (songIndex >= songs.length - 1) {
+      songIndex = 0;
     } else {
-        if (songIndex >= songs.length - 1) {
-            songIndex = 0;
-        } else {
-            songIndex += 1;
-        }
+      songIndex += 1;
     }
-    audioElement.src = `${songs[songIndex].filePath}`;
-    updateSongDetails();
+  }
+  audioElement.src = `${songs[songIndex].filePath}`;
+  updateSongDetails();
+  audioElement.currentTime = 0;
+  audioElement.play();
+  masterPlay.classList.remove("fa-play-circle");
+  masterPlay.classList.add("fa-pause-circle");
+});
+
+document.getElementById("previous").addEventListener("click", () => {
+  console.log("previous function is called");
+  if (isShuffling) {
+    songIndex = Math.floor(Math.random() * songs.length);
+  } else {
+    if (songIndex <= 0) {
+      songIndex = 0;
+    } else {
+      songIndex -= 1;
+    }
+  }
+  audioElement.src = `${songs[songIndex].filePath}`;
+  updateSongDetails();
+  audioElement.currentTime = 0;
+  audioElement.play();
+  masterPlay.classList.remove("fa-play-circle");
+  masterPlay.classList.add("fa-pause-circle");
+});
+
+repeatButton.addEventListener("click", () => {
+  console.log("repeatButton function is called");
+  isRepeating = !isRepeating;
+  console.log("isRepeating", isRepeating);
+  repeatButton.classList.toggle("active");
+  repeatButton.style.color = isRepeating ? "yellow" : "";
+});
+
+shuffleButton.addEventListener("click", () => {
+  console.log("shuffleButton function is called");
+  isShuffling = !isShuffling;
+  console.log("isShuffling", isShuffling);
+  shuffleButton.classList.toggle("active");
+  shuffleButton.style.color = isShuffling ? "yellow" : "";
+});
+
+audioElement.addEventListener("ended", () => {
+  if (isRepeating) {
     audioElement.currentTime = 0;
     audioElement.play();
-    masterPlay.classList.remove('fa-play-circle');
-    masterPlay.classList.add('fa-pause-circle');
-});
-
-document.getElementById('previous').addEventListener('click', () => {
-    console.log("previous function is called");
-    if (isShuffling) {
-        songIndex = Math.floor(Math.random() * songs.length);
-    } else {
-        if (songIndex <= 0) {
-            songIndex = 0;
-        } else {
-            songIndex -= 1;
-        }
-    }
-    audioElement.src = `${songs[songIndex].filePath}`;
-    updateSongDetails();
-    audioElement.currentTime = 0;
-    audioElement.play();
-    masterPlay.classList.remove('fa-play-circle');
-    masterPlay.classList.add('fa-pause-circle');
-});
-
-repeatButton.addEventListener('click', () => {
-    console.log("repeatButton function is called");
-    isRepeating = !isRepeating;
-    console.log("isRepeating", isRepeating);
-    repeatButton.classList.toggle('active');
-    repeatButton.style.color = isRepeating ? 'yellow' : '';
-});
-
-shuffleButton.addEventListener('click', () => {
-    console.log("shuffleButton function is called");
-    isShuffling = !isShuffling;
-    console.log("isShuffling", isShuffling)
-    shuffleButton.classList.toggle('active');
-    shuffleButton.style.color = isShuffling ? 'yellow' : '';
-});
-
-audioElement.addEventListener('ended', () => {
-    if (isRepeating) {
-        audioElement.currentTime = 0;
-        audioElement.play();
-    } else {
-        document.getElementById('next').click();
-    }
+  } else {
+    document.getElementById("next").click();
+  }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    upViewWrapper.addEventListener("click", () => {
-        bottom.classList.toggle("expanded");
+  upViewWrapper.addEventListener("click", () => {
+    bottom.classList.toggle("expanded");
 
-        if (bottom.classList.contains("expanded")) {
-            updateSongDetails();
-            sliderWrapper.style.display = "none";
-            upViewIcon.classList.remove("fa-angle-up");
-            upViewIcon.classList.add("fa-angle-down");
-            songInfo.classList.add("hidden");
-            singerImg.classList.remove("hidden");
-            lyrics.classList.remove("hidden");
-        } else {
-            sliderWrapper.style.display = "block";
-            upViewIcon.classList.remove("fa-angle-down");
-            upViewIcon.classList.add("fa-angle-up");
-            songInfo.classList.remove("hidden");
-            singerImg.classList.add("hidden");
-            lyrics.classList.add("hidden");
-        }
-    });
+    if (bottom.classList.contains("expanded")) {
+      updateSongDetails();
+      sliderWrapper.style.display = "none";
+      upViewIcon.classList.remove("fa-angle-up");
+      upViewIcon.classList.add("fa-angle-down");
+      songInfo.classList.add("hidden");
+      singerImg.classList.remove("hidden");
+      lyrics.classList.remove("hidden");
+    } else {
+      sliderWrapper.style.display = "block";
+      upViewIcon.classList.remove("fa-angle-down");
+      upViewIcon.classList.add("fa-angle-up");
+      songInfo.classList.remove("hidden");
+      singerImg.classList.add("hidden");
+      lyrics.classList.add("hidden");
+    }
+  });
 });
